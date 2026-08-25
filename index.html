@@ -174,9 +174,9 @@
   .about-card p{color:var(--espresso);opacity:.75;font-size:14px;margin-top:14px;}
 
   /* WHAT WE DO */
-  .capabilities{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 50px;margin-top:46px;}
-  .cap-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid rgba(28,21,18,.1);}
-  .cap-item .diamond{margin-top:6px;}
+  .capabilities{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:46px;}
+  .cap-item{display:flex;align-items:flex-start;gap:14px;padding:22px 24px;}
+  .cap-item .diamond{margin-top:6px;flex-shrink:0;}
   .cap-item p{font-size:15px;}
 
   /* SERVICES */
@@ -185,30 +185,37 @@
   .service-card .icon{display:block;font-size:26px;margin-bottom:18px;filter:saturate(115%);}
   .service-card h3{font-size:16.5px;margin-bottom:8px;letter-spacing:-.005em;}
   .service-card p{font-size:13.5px;color:var(--stone);}
+  .website-service-block{margin-top:70px;padding-top:56px;border-top:1px solid rgba(28,21,18,.12);}
+  .website-service-block .sub-title{font-family:'Fraunces',serif;font-size:clamp(22px,2.4vw,30px);margin-bottom:10px;}
+  .website-service-block .lede{margin-bottom:36px;}
+  .website-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .web-tile{padding:18px 20px;font-size:14px;font-weight:500;display:flex;align-items:center;gap:11px;}
+  @media(max-width:900px){ .website-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:600px){ .website-grid{grid-template-columns:1fr;} }
 
   /* PROCESS */
-  .process{margin-top:60px;}
-  .step{display:grid;grid-template-columns:90px 1fr;gap:30px;padding:30px 0;border-top:1px solid rgba(28,21,18,.12);}
-  .step:last-child{border-bottom:1px solid rgba(28,21,18,.12);}
+  .process{margin-top:56px;display:grid;gap:16px;}
+  .step{display:grid;grid-template-columns:90px 1fr;gap:30px;padding:30px 32px;align-items:center;}
   .step .step-num{font-family:'Fraunces',serif;font-size:40px;font-weight:700;color:var(--champagne);-webkit-text-stroke:1px var(--gold);line-height:1;}
   .step h3{font-size:22px;margin-bottom:8px;}
   .step p{color:var(--stone);font-size:15px;max-width:520px;}
 
   /* BENEFITS */
-  #benefits{background:var(--espresso);}
+  #benefits{background:var(--espresso);overflow:hidden;}
   #benefits h2,#benefits .kicker .lbl{color:var(--ivory);}
   #benefits .kicker .rule{background:rgba(245,240,230,.18);}
-  .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;}
+  .benefit-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);}
+  .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;position:relative;z-index:1;}
   .benefit{
     position:relative;padding:32px 26px;
     background:var(--glass-bg-dark);
     -webkit-backdrop-filter:blur(22px) saturate(160%);
     backdrop-filter:blur(22px) saturate(160%);
     border:1px solid var(--glass-border-dark);border-radius:18px;
-    box-shadow:var(--glass-shadow-dark);
+    box-shadow:0 24px 50px -14px rgba(0,0,0,.85), 0 8px 20px -6px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.1);
     transition:box-shadow .4s ease, transform .4s ease, background .4s ease;
   }
-  .benefit:hover{background:rgba(36,26,21,.52);transform:translateY(-3px);box-shadow:0 26px 68px -16px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.1);}
+  .benefit:hover{background:rgba(36,26,21,.6);transform:translateY(-5px);box-shadow:0 32px 64px -14px rgba(0,0,0,.9), 0 10px 24px -6px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.14);}
   .benefit::before,.benefit::after{content:"";position:absolute;width:13px;height:13px;border:1.5px solid var(--gold);opacity:.85;pointer-events:none;}
   .benefit::before{top:10px;left:10px;border-right:none;border-bottom:none;}
   .benefit::after{bottom:10px;right:10px;border-left:none;border-top:none;}
@@ -223,6 +230,10 @@
   .chip-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:46px;}
   .chip{padding:12px 22px;font-size:13.5px;display:flex;align-items:center;gap:9px;transition:.25s;border-radius:30px;}
   .chip:hover{border-color:var(--gold);background:var(--paper-strong);}
+  .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:46px;}
+  .who-tile{padding:22px 24px;font-size:14.5px;font-weight:500;display:flex;align-items:center;gap:12px;}
+  @media(max-width:900px){ .who-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:600px){ .who-grid{grid-template-columns:1fr;} }
 
   /* WHY */
   .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:52px;align-items:start;}
@@ -238,6 +249,9 @@
   .member ul{padding-left:0;}
   .member li{list-style:none;font-size:13px;color:var(--stone);margin-bottom:8px;padding-left:14px;position:relative;}
   .member li::before{content:"—";position:absolute;left:0;color:var(--gold);}
+  .member-insta{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(28,21,18,.12);font-size:13px;font-weight:600;color:var(--espresso);text-decoration:none;transition:color .2s ease;}
+  .member-insta svg{width:17px;height:17px;flex-shrink:0;color:var(--gold);}
+  .member-insta:hover{color:var(--gold);}
 
   /* VMA */
   #vma{}
@@ -347,7 +361,7 @@
     .about-grid,.why-grid{grid-template-columns:1fr;gap:36px;}
     .capabilities{grid-template-columns:1fr;}
     .services-grid{grid-template-columns:1fr;}
-    .benefit-grid,.team-grid,.vma-grid{grid-template-columns:1fr;}
+    .benefit-grid,.team-grid,.vma-grid,.capabilities{grid-template-columns:1fr;}
     .step{grid-template-columns:56px 1fr;gap:18px;}
     .field-row{grid-template-columns:1fr;}
     .lead-form{padding:32px 22px;}
@@ -442,14 +456,14 @@
     <h2 class="title">AI website chatbots, built around your business.</h2>
     <p class="lede">The chatbot is built around the company's own information, allowing website visitors to ask questions and receive relevant answers in a conversational way.</p>
     <div class="capabilities">
-      <div class="cap-item"><span class="diamond sm"></span><p>Company details</p></div>
-      <div class="cap-item"><span class="diamond sm"></span><p>Products and services</p></div>
-      <div class="cap-item"><span class="diamond sm"></span><p>Frequently asked questions</p></div>
-      <div class="cap-item"><span class="diamond sm"></span><p>Pricing and packages</p></div>
-      <div class="cap-item"><span class="diamond sm"></span><p>Business hours</p></div>
-      <div class="cap-item"><span class="diamond sm"></span><p>Location and contact information</p></div>
-      <div class="cap-item"><span class="diamond sm"></span><p>Service details</p></div>
-      <div class="cap-item"><span class="diamond sm"></span><p>General business-related information</p></div>
+      <div class="cap-item glass"><span class="diamond sm"></span><p>Company details</p></div>
+      <div class="cap-item glass"><span class="diamond sm"></span><p>Products and services</p></div>
+      <div class="cap-item glass"><span class="diamond sm"></span><p>Frequently asked questions</p></div>
+      <div class="cap-item glass"><span class="diamond sm"></span><p>Pricing and packages</p></div>
+      <div class="cap-item glass"><span class="diamond sm"></span><p>Business hours</p></div>
+      <div class="cap-item glass"><span class="diamond sm"></span><p>Location and contact information</p></div>
+      <div class="cap-item glass"><span class="diamond sm"></span><p>Service details</p></div>
+      <div class="cap-item glass"><span class="diamond sm"></span><p>General business-related information</p></div>
     </div>
   </div>
 </section>
@@ -457,17 +471,36 @@
 <section id="services">
   <div class="wrap">
     <div class="kicker"><span class="idx">03</span><span class="rule"></span><span class="lbl">Our Services</span></div>
-    <h2 class="title">Everything needed to put a chatbot to work for you.</h2>
+    <h2 class="title">Everything needed to put a chatbot — and a website — to work for you.</h2>
     <p class="lede">From first setup to ongoing upkeep, each piece is built and maintained as part of the same service.</p>
     <div class="services-grid">
       <div class="service-card glass"><span class="icon">🤖</span><h3>AI Chatbots</h3><p>Answer customer questions automatically, 24/7.</p></div>
       <div class="service-card glass"><span class="icon">🌐</span><h3>Website Integration</h3><p>Add the chatbot directly to your website.</p></div>
       <div class="service-card glass"><span class="icon">🧠</span><h3>AI Business Setup</h3><p>Teach the chatbot about your business and services.</p></div>
+      <div class="service-card glass"><span class="icon">📝</span><h3>Contact &amp; Enquiry Forms</h3><p>Custom forms so clients can submit their details and requirements.</p></div>
       <div class="service-card glass"><span class="icon">📋</span><h3>Lead Collection</h3><p>Collect customer enquiries and contact details.</p></div>
-      <div class="service-card glass"><span class="icon">📊</span><h3>Google Sheets Integration</h3><p>Automatically save customer enquiries in Google Sheets.</p></div>
+      <div class="service-card glass"><span class="icon">📊</span><h3>Google Sheets Integration</h3><p>Automatically save every submission in an organized spreadsheet.</p></div>
+      <div class="service-card glass"><span class="icon">🔎</span><h3>Organized Client Data</h3><p>Search, filter and sort submissions instead of digging through emails.</p></div>
       <div class="service-card glass"><span class="icon">📧</span><h3>Email Notifications</h3><p>Get notified when a new customer enquiry arrives.</p></div>
+      <div class="service-card glass"><span class="icon">📱</span><h3>Mobile-Ready Forms</h3><p>Clients can submit enquiries from any phone or device.</p></div>
       <div class="service-card glass"><span class="icon">🎨</span><h3>Custom Chatbot Design</h3><p>Customize the chatbot to match your brand.</p></div>
       <div class="service-card glass"><span class="icon">🛠️</span><h3>Chatbot Maintenance</h3><p>Keep your chatbot updated and running smoothly.</p></div>
+    </div>
+
+    <div class="website-service-block">
+      <h3 class="sub-title">Website Design &amp; Development</h3>
+      <p class="lede">Alongside chatbots, we design and build the website itself — from a single landing page to a full multi-section business site.</p>
+      <div class="website-grid">
+        <div class="web-tile glass"><span class="diamond sm"></span>Custom Website Design</div>
+        <div class="web-tile glass"><span class="diamond sm"></span>Responsive Development</div>
+        <div class="web-tile glass"><span class="diamond sm"></span>Landing Pages</div>
+        <div class="web-tile glass"><span class="diamond sm"></span>Business &amp; Portfolio Websites</div>
+        <div class="web-tile glass"><span class="diamond sm"></span>Product / Catalogue Websites</div>
+        <div class="web-tile glass"><span class="diamond sm"></span>Contact &amp; Enquiry Forms</div>
+        <div class="web-tile glass"><span class="diamond sm"></span>Spreadsheet-Based Lead Collection</div>
+        <div class="web-tile glass"><span class="diamond sm"></span>Animations &amp; Interactions</div>
+        <div class="web-tile glass"><span class="diamond sm"></span>Website Deployment Assistance</div>
+      </div>
     </div>
   </div>
 </section>
@@ -477,16 +510,18 @@
     <div class="kicker"><span class="idx">04</span><span class="rule"></span><span class="lbl">How We Build It</span></div>
     <h2 class="title">Five steps, in order, every time.</h2>
     <div class="process">
-      <div class="step"><div class="step-num">01</div><div><h3>Understand the Business</h3><p>We first learn about the company, its services, products, customers, and the information visitors usually need.</p></div></div>
-      <div class="step"><div class="step-num">02</div><div><h3>Prepare the Information</h3><p>We organize the company's information so the AI can use it effectively when responding to visitors.</p></div></div>
-      <div class="step"><div class="step-num">03</div><div><h3>Build the Chatbot</h3><p>We configure the AI assistant around the business's information and requirements.</p></div></div>
-      <div class="step"><div class="step-num">04</div><div><h3>Customize</h3><p>We make the chatbot fit the company's website and visual identity.</p></div></div>
-      <div class="step"><div class="step-num">05</div><div><h3>Deploy</h3><p>Once everything is ready, the chatbot is integrated into the website and made available to visitors.</p></div></div>
+      <div class="step glass"><div class="step-num">01</div><div><h3>Understand the Business</h3><p>We first learn about the company, its services, products, customers, and the information visitors usually need.</p></div></div>
+      <div class="step glass"><div class="step-num">02</div><div><h3>Prepare the Information</h3><p>We organize the company's information so the AI can use it effectively when responding to visitors.</p></div></div>
+      <div class="step glass"><div class="step-num">03</div><div><h3>Build the Chatbot</h3><p>We configure the AI assistant around the business's information and requirements.</p></div></div>
+      <div class="step glass"><div class="step-num">04</div><div><h3>Customize</h3><p>We make the chatbot fit the company's website and visual identity.</p></div></div>
+      <div class="step glass"><div class="step-num">05</div><div><h3>Deploy</h3><p>Once everything is ready, the chatbot is integrated into the website and made available to visitors.</p></div></div>
     </div>
   </div>
 </section>
 
 <section id="benefits">
+  <div class="benefit-orb" style="width:420px;height:420px;background:var(--gold);opacity:.22;top:-60px;left:-100px;"></div>
+  <div class="benefit-orb" style="width:380px;height:380px;background:var(--champagne);opacity:.18;bottom:-80px;right:-60px;"></div>
   <div class="wrap">
     <div class="kicker"><span class="idx">05</span><span class="rule"></span><span class="lbl">What The Chatbot Helps With</span></div>
     <h2 class="title">Six ways it earns its place on your website.</h2>
@@ -506,17 +541,17 @@
     <div class="kicker"><span class="idx">06</span><span class="rule"></span><span class="lbl">Who We Work With</span></div>
     <h2 class="title">For businesses that field the same questions, every day.</h2>
     <p class="lede">Our solution can be useful for businesses that receive regular questions through their websites.</p>
-    <div class="chip-row">
-      <div class="chip glass"><span class="diamond sm"></span>Real Estate Businesses</div>
-      <div class="chip glass"><span class="diamond sm"></span>Construction Companies</div>
-      <div class="chip glass"><span class="diamond sm"></span>Educational Institutions</div>
-      <div class="chip glass"><span class="diamond sm"></span>Restaurants</div>
-      <div class="chip glass"><span class="diamond sm"></span>Hotels</div>
-      <div class="chip glass"><span class="diamond sm"></span>Salons and Beauty Businesses</div>
-      <div class="chip glass"><span class="diamond sm"></span>Professional Service Businesses</div>
-      <div class="chip glass"><span class="diamond sm"></span>Local Businesses</div>
-      <div class="chip glass"><span class="diamond sm"></span>Startups</div>
-      <div class="chip glass"><span class="diamond sm"></span>Small and Medium Businesses</div>
+    <div class="who-grid">
+      <div class="who-tile glass"><span class="diamond sm"></span>Real Estate Businesses</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Construction Companies</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Educational Institutions</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Restaurants</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Hotels</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Salons and Beauty Businesses</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Professional Service Businesses</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Local Businesses</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Startups</div>
+      <div class="who-tile glass"><span class="diamond sm"></span>Small and Medium Businesses</div>
     </div>
   </div>
 </section>
@@ -552,6 +587,10 @@
           <li>Coordinates overall execution</li>
           <li>Works on development and improvement of Vertex Studio's solutions</li>
         </ul>
+        <a class="member-insta" href="https://www.instagram.com/nu1han.g/" target="_blank" rel="noopener" aria-label="Nuthan G on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          @nu1han.g
+        </a>
       </div>
       <div class="member glass">
         <h3>Thejas B S</h3>
@@ -563,6 +602,10 @@
           <li>Learns AI and related technologies</li>
           <li>Supports the team as he develops his skills</li>
         </ul>
+        <a class="member-insta" href="https://www.instagram.com/the_jas22/" target="_blank" rel="noopener" aria-label="Thejas B S on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          @the_jas22
+        </a>
       </div>
       <div class="member glass">
         <h3>Rachan S. D</h3>
@@ -574,6 +617,10 @@
           <li>Maintains financial records</li>
           <li>Supports the company's financial operations</li>
         </ul>
+        <a class="member-insta" href="https://www.instagram.com/_rachangowda_/" target="_blank" rel="noopener" aria-label="Rachan on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          @_rachangowda_
+        </a>
       </div>
     </div>
   </div>
@@ -636,6 +683,11 @@
         <label for="lf-service">What do you need?</label>
         <select id="lf-service">
           <option>AI Website Chatbot</option>
+          <option>Website Design &amp; Development</option>
+          <option>Website Enquiry Forms &amp; Data Collection</option>
+          <option>Lead Collection Setup</option>
+          <option>Google Sheets Integration</option>
+          <option>Chatbot + Form Combo</option>
           <option>Not sure yet — let's talk</option>
         </select>
       </div>
@@ -799,8 +851,9 @@
 (function(){
   var form = document.getElementById('lead-form');
   var status = document.getElementById('lf-status');
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxiPZagm-hzqkswhJkDDWr2f2wYtTfgMKjomGXRFM1g9i_xRxUu30SZGvT0YztZhUf/exec';
 
-  form.addEventListener('submit', async function(e){
+  form.addEventListener('submit', function(e){
     e.preventDefault();
 
     var name = document.getElementById('lf-name').value.trim();
@@ -815,34 +868,43 @@
       status.classList.add('err');
       return;
     }
-
     status.classList.remove('err');
-    status.textContent = 'Sending...';
+    status.textContent = 'Sending…';
 
-    try {
-      var response = await fetch('https://script.google.com/macros/s/AKfycbxn9EvOggCMx3gkVB6sMel3icqpsTEeSjlYHh86UN45ZmFbLOETT2w4INUk27zAY5z3Rw/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8'
-        },
-        body: JSON.stringify({
-          fullName: name,
-          businessName: business,
-          email: email,
-          phone: phone,
-          need: service,
-          businessInfo: message
-        })
-      });
+    var payload = {
+      fullName: name,
+      businessName: business,
+      email: email,
+      phone: phone,
+      need: service,
+      businessInfo: message
+    };
 
-      status.textContent = 'Thank you! Your enquiry has been sent successfully.';
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).then(function(){
+      status.textContent = 'Thanks — your enquiry has been sent!';
       form.reset();
-
-    } catch (error) {
-      status.textContent = 'Something went wrong. Please try again.';
+    }).catch(function(){
+      status.textContent = 'Something went wrong. Opening your email app instead…';
       status.classList.add('err');
-    }
+
+      var subject = 'New inquiry from ' + name + (business ? ' (' + business + ')' : '');
+      var body =
+        'Name: ' + name + '\n' +
+        'Business: ' + (business || '-') + '\n' +
+        'Email: ' + email + '\n' +
+        'Phone: ' + (phone || '-') + '\n' +
+        'Interested in: ' + service + '\n\n' +
+        'Details:\n' + (message || '-');
+
+      window.location.href = 'mailto:connectvertexstudio@gmail.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+    });
   });
 })();
 </script>
