@@ -851,9 +851,10 @@
 (function(){
   var form = document.getElementById('lead-form');
   var status = document.getElementById('lf-status');
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxiPZagm-hzqkswhJkDDWr2f2wYtTfgMKjomGXRFM1g9i_xRxUu30SZGvT0YztZhUf/exec';
 
-  form.addEventListener('submit', function(e){
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e){
     e.preventDefault();
 
     var name = document.getElementById('lf-name').value.trim();
@@ -864,50 +865,116 @@
     var message = document.getElementById('lf-message').value.trim();
 
     if (!name || !email){
-      status.textContent = 'Add your name and email so we can get back to you.';
-      status.classList.add('err');
+      if (status) {
+        status.textContent = 'Add your name and email so we can get back to you.';
+        status.classList.add('err');
+      }
       return;
     }
-    status.classList.remove('err');
-    status.textContent = 'Sending…';
 
-    var payload = {
-      fullName: name,
-      businessName: business,
-      email: email,
-      phone: phone,
-      need: service,
-      businessInfo: message
-    };
+    if (status) {
+      status.classList.remove('err');
+      status.textContent = 'Sending...';
+    }
 
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload)
-    }).then(function(){
-      status.textContent = 'Thanks — your enquiry has been sent!';
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbxn9EvOggCMx3gkVB6sMel3icqpsTEeSjlYHh86UN45ZmFbLOETT2w4INUk27zAY5z3Rw/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({
+          fullName: name,
+          businessName: business,
+          email: email,
+          phone: phone,
+          need: service,
+          businessInfo: message
+        })
+      });
+
+      if (status) {
+        status.textContent = 'Thank you! Your enquiry has been sent successfully.';
+      }
+
       form.reset();
-    }).catch(function(){
-      status.textContent = 'Something went wrong. Opening your email app instead…';
-      status.classList.add('err');
 
-      var subject = 'New inquiry from ' + name + (business ? ' (' + business + ')' : '');
-      var body =
-        'Name: ' + name + '\n' +
-        'Business: ' + (business || '-') + '\n' +
-        'Email: ' + email + '\n' +
-        'Phone: ' + (phone || '-') + '\n' +
-        'Interested in: ' + service + '\n\n' +
-        'Details:\n' + (message || '-');
+    } catch (error) {
+      console.error(error);
 
-      window.location.href = 'mailto:connectvertexstudio@gmail.com'
-        + '?subject=' + encodeURIComponent(subject)
-        + '&body=' + encodeURIComponent(body);
-    });
+      if (status) {
+        status.textContent = 'Something went wrong. Please try again.';
+        status.classList.add('err');
+      }
+    }
   });
 })();
 </script>
+<script>
+(function(){
+  var form = document.getElementById('lead-form');
+  var status = document.getElementById('lf-status');
 
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    var name = document.getElementById('lf-name').value.trim();
+    var business = document.getElementById('lf-business').value.trim();
+    var email = document.getElementById('lf-email').value.trim();
+    var phone = document.getElementById('lf-phone').value.trim();
+    var service = document.getElementById('lf-service').value;
+    var message = document.getElementById('lf-message').value.trim();
+
+    if (!name || !email){
+      if (status) {
+        status.textContent = 'Add your name and email so we can get back to you.';
+        status.classList.add('err');
+      }
+      return;
+    }
+
+    if (status) {
+      status.classList.remove('err');
+      status.textContent = 'Sending...';
+    }
+
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbxn9EvOggCMx3gkVB6sMel3icqpsTEeSjlYHh86UN45ZmFbLOETT2w4INUk27zAY5z3Rw/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({
+          fullName: name,
+          businessName: business,
+          email: email,
+          phone: phone,
+          need: service,
+          businessInfo: message
+        })
+      });
+
+      if (status) {
+        status.textContent = 'Thank you! Your enquiry has been sent successfully.';
+      }
+
+      form.reset();
+
+    } catch (error) {
+      console.error(error);
+
+      if (status) {
+        status.textContent = 'Something went wrong. Please try again.';
+        status.classList.add('err');
+      }
+    }
+  });
+})();
+</script>
+  
 </body>
 </html>
